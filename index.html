@@ -99,7 +99,7 @@ async function loadMovies() {
       const card = document.createElement('div');
       card.className = 'movie-card';
       card.innerHTML = `
-        <h2 class="title"><a href="${m.file}">${m.title}</a></h2>
+        <h2 class="title"><a href="https://waterbears.in/movies/${m.id}.html">${m.title}</a></h2>
         <p class="genre">${m.genre || ''}</p>
         <p class="description">${m.description}</p>
       `;
@@ -116,3 +116,4 @@ loadMovies();
 
 </body>
 </html>
+
