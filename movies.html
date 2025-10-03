@@ -35,7 +35,7 @@
         div.classList.add("movie-card");
 
         div.innerHTML = `
-          <h2 class="title"><a href="${m.id}">${m.title}</a></h2>
+          <h2 class="title"><a href="https://waterbears.in/movies/{m.id}.html">${m.title}</a></h2>
           <p class="genre">${m.genre || ''}</p>
           <p class="description">${m.description || ''}</p>
         `;
@@ -51,5 +51,6 @@
 
 </body>
 </html>
+
 
 
