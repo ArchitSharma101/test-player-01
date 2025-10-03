@@ -25,14 +25,32 @@
             margin: 5px 0 15px 0;
             font-weight: 400;
         }
+        nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
         nav a {
             color: #fff;
             text-decoration: none;
-            margin: 0 10px;
+            padding: 6px 12px;
             font-weight: 500;
+            transition: background 0.2s;
         }
         nav a:hover {
             text-decoration: underline;
+        }
+        nav a.add-movie-btn {
+            background-color: #e50914;
+            color: #fff;
+            border-radius: 4px;
+            font-weight: 500;
+            font-size: 0.9em;
+        }
+        nav a.add-movie-btn:hover {
+            background-color: #b0060f;
+            text-decoration: none;
         }
         main#movie-list {
             display: flex;
@@ -71,19 +89,17 @@
             font-size: 0.9em;
             color: #333;
         }
-        .add-movie-btn {
-            display: inline-block;
-            margin: 20px auto;
-            padding: 12px 24px;
-            background-color: #e50914;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 6px;
-            font-weight: 700;
-            transition: background 0.2s;
-        }
-        .add-movie-btn:hover {
-            background-color: #b0060f;
+
+        /* Responsive for small screens */
+        @media (max-width: 600px) {
+            nav {
+                flex-direction: column;
+                align-items: center;
+            }
+            main#movie-list {
+                flex-direction: column;
+                align-items: center;
+            }
         }
     </style>
 </head>
@@ -98,6 +114,7 @@
         <a href="genres.html">Genres</a>
         <a href="top-rated.html">Top Rated</a>
         <a href="about.html">About</a>
+        <a href="add_movie.html" class="add-movie-btn">Add Movie</a>
     </nav>
 </header>
 
@@ -115,8 +132,6 @@
         <p class="description">Two astronomers go on a media tour to warn humankind of a planet-killing comet hurtling toward Earth.</p>
     </div>
 
-    <!-- Add Movie Button -->
-    <a href="add_movie.html" class="add-movie-btn">Add Movie</a>
 </main>
 
 </body>
