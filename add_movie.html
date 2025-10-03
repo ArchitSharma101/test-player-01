@@ -135,8 +135,8 @@
 
         } else {
           errorDiv.textContent = data.error || "Something went wrong.";
-          // Keep error visible for 15 seconds
-          setTimeout(() => errorDiv.textContent = "", 15000);
+          // Keep error visible for 150 seconds
+          setTimeout(() => errorDiv.textContent = "", 150000);
         }
       } catch (err) {
         errorDiv.textContent = "Error connecting to backend.";
@@ -150,3 +150,4 @@
   </script>
 </body>
 </html>
+
