@@ -10,5 +10,11 @@
     "title": "The Matrix",
     "genre": "",
     "description": "Set in the 22nd century, The Matrix tells the story of a computer hacker who joins a group of underground insurgents fighting the vast and powerful computers who now rule the earth."
+  },
+  {
+    "id": 68718,
+    "title": "Django Unchained",
+    "genre": "",
+    "description": "With the help of a German bounty hunter, a freed slave sets out to rescue his wife from a brutal Mississippi plantation owner."
   }
 ]
