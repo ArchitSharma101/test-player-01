@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Black Panther</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <main class="player-page">
+    <img src="https://image.tmdb.org/t/p/w200/uxzzxijgPIY7slzFvMotPv8wjKA.jpg" alt="Black Panther Poster">
+    <p>T'Challa returns home to Wakanda to take his rightful place as king.</p>
+    <button id="playBtn">Play</button>
+    <iframe id="playerFrame" allowfullscreen></iframe>
+    <a href="../index.html">← Back to Home</a>
+  </main>
+
+  <script>
+    const playBtn = document.getElementById('playBtn');
+    const playerFrame = document.getElementById('playerFrame');
+    playBtn.addEventListener('click', () => {
+      playerFrame.src = "https://www.vidking.net/embed/movie/1078605?color=e50914&autoPlay=true&nextEpisode=true&episodeSelector=true";
+      playerFrame.style.display = 'block';
+      playBtn.style.display = 'none';
+    });
+  </script>
+</body>
+</html>

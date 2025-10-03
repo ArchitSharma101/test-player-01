@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Witcher</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <header>
+    <h1>The Witcher</h1>
+  </header>
+
+  <main>
+    <div class="info">
+      <img src="https://image.tmdb.org/t/p/w200/zrPpUlehQaBf8YX2NrVrKK8IEpf.jpg" alt="Poster">
+      <p>Geralt, a mutated monster hunter, struggles to find his place in a world.</p>
+    </div>
+
+    <div id="seasonContainer">
+      <h3>Season 1</h3>
+      <button onclick="playEpisode(1)">Episode 1</button>
+      <button onclick="playEpisode(2)">Episode 2</button>
+      <button onclick="playEpisode(3)">Episode 3</button>
+      <button onclick="playEpisode(4)">Episode 4</button>
+      <button onclick="playEpisode(5)">Episode 5</button>
+      <button onclick="playEpisode(6)">Episode 6</button>
+      <button onclick="playEpisode(7)">Episode 7</button>
+      <button onclick="playEpisode(8)">Episode 8</button>
+    </div>
+
+    <iframe id="playerFrame" width="100%" height="500" style="display:none;" allowfullscreen></iframe>
+    <p><a href="../index.html">← Back to Home</a></p>
+
+    <script>
+      const playerFrame = document.getElementById('playerFrame');
+      function playEpisode(ep) {
+        playerFrame.src = `https://www.vidking.net/embed/tv/119051/1/${ep}?color=e50914&autoPlay=true&nextEpisode=true&episodeSelector=true`;
+        playerFrame.style.display = 'block';
+      }
+    </script>
+  </main>
+</body>
+</html>

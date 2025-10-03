@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Movie Hub | Player</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link href="../style.css" rel="stylesheet">
+  <style>
+    main {
+      max-width: 1000px;
+      margin: 40px auto;
+      text-align: center;
+    }
+    h1 { margin-bottom: 10px; font-size: 2.5em; }
+    p { margin: 6px 0; font-size: 1.1em; }
+    .play-button {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 15px 30px;
+      font-size: 1.2em;
+      background-color: #e50914;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .play-button:hover { background-color: #b00610; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Movie Hub</h1>
+  <h3>Explore Movies from All Genres</h3>
+  <nav>
+      <a href="../index.html">Home</a>
+      <a href="../movies.html">Movies</a>
+      <a href="../genres.html">Genres</a>
+      <a href="../top-rated.html">Top Rated</a>
+      <a href="../about.html">About</a>
+  </nav>
+</header>
+
+<main>
+  <h1 id="movie-title">Movie Title</h1>
+  <p id="movie-genre"><strong>Genre:</strong> </p>
+  <p id="movie-director"><strong>Director:</strong> </p>
+  <p id="movie-year"><strong>Year:</strong> </p>
+  <p id="movie-description"><strong>Description:</strong> </p>
+
+  <!-- VidKing iframe -->
+  <iframe id="movie-player" width="100%" height="600" frameborder="0" allowfullscreen></iframe>
+</main>
+
+<script>
+  // Get URL params
+  const params = new URLSearchParams(window.location.search);
+  const title = params.get('title') || "Unknown Movie";
+  const genre = params.get('genre') || "";
+  const director = params.get('director') || "";
+  const year = params.get('year') || "";
+  const description = params.get('description') || "";
+  const tmdbId = params.get('tmdbId') || "";
+
+  // Update page content
+  document.getElementById('movie-title').innerText = title;
+  document.getElementById('movie-genre').innerHTML = `<strong>Genre:</strong> ${genre}`;
+  document.getElementById('movie-director').innerHTML = `<strong>Director:</strong> ${director}`;
+  document.getElementById('movie-year').innerHTML = `<strong>Year:</strong> ${year}`;
+  document.getElementById('movie-description').innerHTML = `<strong>Description:</strong> ${description}`;
+
+  // Load VidKing iframe
+  if(tmdbId) {
+    document.getElementById('movie-player').src = `https://www.vidking.net/embed/movie/${tmdbId}?color=e50914&autoPlay=true&nextEpisode=true&episodeSelector=true`;
+  }
+</script>
+
+</body>
+</html>

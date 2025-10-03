@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Movie Hub | Inception</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    <style>
+        .movie-details {
+            max-width: 800px;
+            margin: 40px auto;
+            text-align: center;
+        }
+        .movie-details h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        .movie-details p {
+            font-size: 1.1em;
+            margin: 8px 0;
+        }
+        .play-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 15px 30px;
+            background-color: #e50914;
+            color: white;
+            font-size: 1.2em;
+            font-weight: bold;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .play-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Movie Hub</h1>
+    <h3>Explore Movies from All Genres</h3>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="movies.html">Movies</a>
+        <a href="genres.html">Genres</a>
+        <a href="top-rated.html">Top Rated</a>
+        <a href="about.html">About</a>
+    </nav>
+</header>
+
+<main class="movie-details">
+    <h1>Inception</h1>
+    <p><strong>Genre:</strong> Sci-Fi / Thriller</p>
+    <p><strong>Director:</strong> Christopher Nolan</p>
+    <p><strong>Year:</strong> 2010</p>
+    <p><strong>Description:</strong> A thief who enters dreams to steal secrets is tasked with planting an idea in a CEO's mind.</p>
+
+    <!-- Play Button linking to the embedded VidKing player -->
+    <a class="play-button" href="inception-player.html">▶ Play Movie</a>
+</main>
+
+</body>
+</html>
