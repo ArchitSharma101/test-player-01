@@ -130,8 +130,8 @@
           resultDiv.textContent = `Movie added successfully! ID: ${movieId}`;
           document.getElementById("movieName").value = "";
 
-          // Keep the success message visible for 10 seconds
-          setTimeout(() => resultDiv.textContent = "", 10000);
+          // Keep the success message visible for 100 seconds
+          setTimeout(() => resultDiv.textContent = "", 100000);
 
         } else {
           errorDiv.textContent = data.error || "Something went wrong.";
@@ -150,4 +150,5 @@
   </script>
 </body>
 </html>
+
 
