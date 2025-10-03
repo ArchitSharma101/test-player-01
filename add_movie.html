@@ -24,19 +24,14 @@ button.addEventListener("click", async () => {
         });
 
         const data = await response.json();
-        if (data.success) {
-            // Show movie title or 'undefined' and include the movie ID
-            const movieTitle = data.title !== undefined ? data.title : "undefined";
-            const movieId = data.id !== undefined ? data.id : "N/A";
 
-            resultDiv.textContent = `Movie "${movieTitle}" added successfully! ID: ${movieId}`;
+        if (data.success) {
+            const movieId = data.movie_id !== undefined ? data.movie_id : "undefined";
+            resultDiv.textContent = `Movie added successfully! ID: ${movieId}`;
             document.getElementById("movieName").value = "";
 
-            // Keep the message visible for 5 seconds before redirecting (optional)
-            setTimeout(() => {
-                resultDiv.textContent = "";
-                window.location.href = "movies.html"; // comment this line if you don't want redirect
-            }, 5000);
+            // Keep the success message visible for 10 seconds
+            setTimeout(() => resultDiv.textContent = "", 10000);
 
         } else {
             errorDiv.textContent = data.error || "Something went wrong.";
@@ -46,7 +41,7 @@ button.addEventListener("click", async () => {
     } catch (err) {
         errorDiv.textContent = "Error connecting to backend.";
         console.error(err);
-        setTimeout(() => errorDiv.textContent = "", 5000);
+        setTimeout(() => errorDiv.textContent = "", 10000);
     } finally {
         button.disabled = false;
         button.textContent = "Add Movie";
