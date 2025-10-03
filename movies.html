@@ -35,7 +35,7 @@
         div.classList.add("movie-card");
 
         div.innerHTML = `
-          <h2 class="title"><a href="${m.filename}">${m.title}</a></h2>
+          <h2 class="title"><a href="${m.tmdb_code}">${m.title}</a></h2>
           <p class="genre">${m.genre || ''}</p>
           <p class="description">${m.description || ''}</p>
         `;
@@ -51,3 +51,4 @@
 
 </body>
 </html>
+
