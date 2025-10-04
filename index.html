@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Movie Hub | Home</title>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-<link href="style.css" rel="stylesheet">
 <style>
 body {
     font-family: 'Roboto', sans-serif;
@@ -28,25 +27,54 @@ nav a {
 }
 nav a:hover { text-decoration: underline; }
 
+/* Search Bar */
 .search-bar {
     margin: 20px auto;
     text-align: center;
+    position: relative;
 }
 .search-bar input {
-    width: 50%;
+    width: 45%;
     max-width: 400px;
-    padding: 10px 15px;
+    padding: 10px 15px 10px 40px; /* space for icon */
     border-radius: 25px;
     border: 1px solid #ccc;
     font-size: 1em;
     outline: none;
-    transition: all 0.2s ease;
-}
-.search-bar input:focus {
-    border-color: #e50914;
-    box-shadow: 0 0 6px rgba(229, 9, 20, 0.6);
+    transition: all 0.3s ease;
+    background: #fff;
+    background-size: 200% 100%;
 }
 
+/* Expand + Glow */
+.search-bar input:focus {
+    width: 60%;
+    border-color: #e50914;
+    box-shadow: 0 0 12px rgba(229, 9, 20, 0.6);
+}
+
+/* Spotlight typing animation */
+.search-bar input.typing {
+    background-image: linear-gradient(120deg, #fff, #ffe6e6, #fff);
+    animation: spotlightMove 1.2s linear infinite;
+}
+@keyframes spotlightMove {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* Search icon */
+.search-bar .icon {
+    position: absolute;
+    left: calc(50% - 180px); /* aligned with input padding */
+    top: 50%;
+    transform: translateY(-50%);
+    color: #888;
+    font-size: 18px;
+    pointer-events: none;
+}
+
+/* Movies Grid */
 main#movie-list {
     display: flex;
     flex-wrap: wrap;
@@ -103,7 +131,8 @@ main#movie-list {
 
   <!-- Search Bar -->
   <div class="search-bar">
-    <input type="text" id="searchInput" placeholder="🔍 Search movies...">
+    <span class="icon">🔍</span>
+    <input type="text" id="searchInput" placeholder="Search movies...">
   </div>
 </header>
 
@@ -140,19 +169,27 @@ async function loadMovies() {
     function highlightText(text, query) {
       if (!query) return text;
       const regex = new RegExp(`(${query})`, "gi");
-      return text.replace(regex, `<mark style="background:yellow;">$1</mark>`);
+      return text.replace(regex, `<span style="color:#e50914; font-weight:700;">$1</span>`);
     }
 
-    // Attach search filter
     const searchInput = document.getElementById('searchInput');
+
+    // Typing effect + search filter
     searchInput.addEventListener('input', function() {
       const query = this.value.toLowerCase();
+
+      if (query.length > 0) {
+        searchInput.classList.add("typing");
+      } else {
+        searchInput.classList.remove("typing");
+      }
+
       document.querySelectorAll('.movie-card').forEach(card => {
         const text = card.dataset.search;
         if (text.includes(query)) {
           card.style.display = 'block';
 
-          // Highlight matches in title, genre, description
+          // Highlight matches
           card.querySelector(".title a").innerHTML = highlightText(card.dataset.title, query);
           card.querySelector(".genre").innerHTML = highlightText(card.dataset.genre, query);
           card.querySelector(".description").innerHTML = highlightText(card.dataset.description, query);
@@ -171,7 +208,5 @@ async function loadMovies() {
 loadMovies();
 </script>
 
-
 </body>
 </html>
-
