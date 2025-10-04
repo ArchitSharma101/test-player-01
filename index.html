@@ -119,12 +119,15 @@ async function loadMovies() {
     const container = document.getElementById('movie-list');
     container.innerHTML = '';
 
+    // Store original data in cards
     movies.forEach(m => {
       const card = document.createElement('div');
       card.className = 'movie-card';
-      card.setAttribute('data-search', 
-        (m.title + " " + (m.genre || "") + " " + (m.description || "")).toLowerCase()
-      );
+      card.dataset.title = m.title;
+      card.dataset.genre = m.genre || "";
+      card.dataset.description = m.description || "";
+      card.dataset.search = (m.title + " " + (m.genre || "") + " " + (m.description || "")).toLowerCase();
+
       card.innerHTML = `
         <h2 class="title"><a href="https://waterbears.in/movies/${m.id}.html">${m.title}</a></h2>
         <p class="genre">${m.genre || ''}</p>
@@ -133,13 +136,29 @@ async function loadMovies() {
       container.appendChild(card);
     });
 
+    // Highlight function
+    function highlightText(text, query) {
+      if (!query) return text;
+      const regex = new RegExp(`(${query})`, "gi");
+      return text.replace(regex, `<mark style="background:yellow;">$1</mark>`);
+    }
+
     // Attach search filter
     const searchInput = document.getElementById('searchInput');
     searchInput.addEventListener('input', function() {
       const query = this.value.toLowerCase();
       document.querySelectorAll('.movie-card').forEach(card => {
-        const text = card.getAttribute('data-search');
-        card.style.display = text.includes(query) ? 'block' : 'none';
+        const text = card.dataset.search;
+        if (text.includes(query)) {
+          card.style.display = 'block';
+
+          // Highlight matches in title, genre, description
+          card.querySelector(".title a").innerHTML = highlightText(card.dataset.title, query);
+          card.querySelector(".genre").innerHTML = highlightText(card.dataset.genre, query);
+          card.querySelector(".description").innerHTML = highlightText(card.dataset.description, query);
+        } else {
+          card.style.display = 'none';
+        }
       });
     });
 
@@ -152,5 +171,7 @@ async function loadMovies() {
 loadMovies();
 </script>
 
+
 </body>
 </html>
+
