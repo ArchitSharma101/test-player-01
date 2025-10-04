@@ -117,6 +117,17 @@ main#movie-list {
 </head>
 <body>
 
+<!-- Password Protection -->
+<script>
+  const correctPassword = "diabetus"; //
+  const userPassword = prompt("Enter Password to access Hub:");
+
+  if (userPassword !== correctPassword) {
+    document.body.innerHTML = "<h1 style='color:red; text-align:center; margin-top:20%;'>❌ Access Denied</h1>";
+    throw new Error("Unauthorized Access");
+  }
+</script>
+
 <header>
   <h1>Movie Hub</h1>
   <h3>Explore Movies from All Genres</h3>
